@@ -1,5 +1,6 @@
-import { updateFormField } from 'src/actions';
+import { updateFormField, submitTrade } from 'src/actions';
 
 export default {
-    updateFormField
+    updateFormField,
+    submitTrade
 }

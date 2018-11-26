@@ -1,5 +1,6 @@
 import { AppActionTypes } from './actionTypes';
 import { ITrade, IStock } from 'src/models/trade';
+import { INewTradeForm } from 'src/models/form';
 
 export enum AppActions {
     APPLICATION_LOAD = 'APPLICATION_LOAD',
@@ -13,7 +14,7 @@ export enum AppActions {
     SUBMIT_TRADE = 'SUBMIT_TRADE',
     SUBMIT_TRADE_SUCCESS = 'SUBMIT_TRADE_SUCCESS',
 
-    UPDATE_FORM_FIELD = 'UPDATE_FORM_FIELD'
+    TOGGLE_NEW_TRADE_FORM_DIALOG = 'TOGGLE_NEW_TRADE_FORM_DIALOG'
 }
 
 export const applicationLoad = ():AppActionTypes => ({
@@ -38,7 +39,12 @@ export const fetchStocksSuccces = (stocks:IStock[]):AppActionTypes => ({
     payload: { stocks }
 });
 
-export const updateFormField = (payload:{ [id:string]:any }):AppActionTypes => ({
-    type: AppActions.UPDATE_FORM_FIELD,
-    payload
+export const submitTrade = (tradeDetails:INewTradeForm):AppActionTypes => ({
+    type: AppActions.SUBMIT_TRADE,
+    payload: { tradeDetails }
+});
+
+
+export const updateFormField = ():AppActionTypes => ({
+    type: AppActions.TOGGLE_NEW_TRADE_FORM_DIALOG
 });

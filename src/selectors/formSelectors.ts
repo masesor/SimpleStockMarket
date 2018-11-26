@@ -2,13 +2,8 @@ import { createSelector } from 'reselect';
 
 import { IAppState } from 'src/models/state';
 
-export const getNewTradeForm = createSelector(
+export const getIsNewTradeFormOpen = createSelector(
     (state:IAppState) => state,
-    (state) => state.newTradeForm
-);
-
-export const getIsFormDialogOpen = createSelector(
-    (state:IAppState) => state,
-    (state) => state.newTradeForm.isOpen
+    (state) => state.isNewTradeFormOpen
 );
   

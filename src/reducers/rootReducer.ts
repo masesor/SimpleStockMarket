@@ -1,9 +1,10 @@
 import { combineReducers, AnyAction } from 'redux';
 import createReducer from 'redux-action-reducer';
+import { reducer as formReducer } from 'redux-form';
+
 import { AppActions } from '../actions';
 import { IAppState } from '../models/state';
 import { ITrade, IStock } from 'src/models/trade';
-import { INewTradeForm } from 'src/models/form';
 
 const trades = createReducer(
   [AppActions.FETCH_TRADES_SUCCESS,
@@ -15,18 +16,15 @@ const stocks = createReducer(
   (state:ITrade[], payload: { stocks:IStock[] }) => payload.stocks]
 )([]);
 
-const newTradeForm = createReducer(
-  [AppActions.UPDATE_FORM_FIELD,
-  (state:INewTradeForm, payload: { [id:string]: any }) => {
-    return {
-      ...state,
-      ...payload
-    }
-  }]
-)([]);
+const isNewTradeFormOpen = createReducer(
+  [AppActions.TOGGLE_NEW_TRADE_FORM_DIALOG,
+  (state:boolean) => !state
+  ]
+)(false);
 
 export const rootReducer = combineReducers<IAppState, AnyAction>({
   trades,
   stocks,
-  newTradeForm
+  isNewTradeFormOpen,
+  form: formReducer
 });

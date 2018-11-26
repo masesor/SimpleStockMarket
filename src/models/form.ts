@@ -1,6 +1,5 @@
-import { ITrade } from './trade';
-
 export interface INewTradeForm {
-    isOpen:boolean;
-    tradeDetails:ITrade;
+    ticker:string;
+    tradePrice:number;
+    quantity:number;
 }
