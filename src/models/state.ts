@@ -1,3 +1,6 @@
+import { ITrade, IStock } from './trade';
+
 export interface IAppState {
-    test:string;
+    trades:ITrade[];
+    stocks:IStock[];
 }

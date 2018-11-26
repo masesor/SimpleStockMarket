@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
+import withRoot from 'src/withRoot';
+import { withStyles, withWidth } from '@material-ui/core';
 
-import { IProps, HomePageView } from './views/HomePageView';
+import { HomePageView, styles } from './views/HomePageView';
 import selector from './selector';
 
-export const HomePage = connect<IProps>(
-    selector
-)(HomePageView);
+export const HomePage = withRoot(withStyles(styles)(connect(selector)(withWidth()(HomePageView))));

@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { IAppState } from '../models/state';
 
-export const getTest = createSelector(
-    (state:IAppState) => state,
-    (state) => state.test
-  );
+export const getTrades = createSelector(
+  (state:IAppState) => state,
+  (state) => state.trades
+);

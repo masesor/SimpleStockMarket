@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const uuidv1 = require('uuid/v1');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -14,6 +15,7 @@ app.use(express.static('dist'));
 
 const createTrade = (request) => (
   {
+    id: uuidv1(), // Time based ID
     ticker: request.ticker,
     tradePrice: parseFloat(request.tradePrice),
     quantity: parseFloat(request.quantity),
@@ -33,26 +35,22 @@ const createStock = (request) => ({
 
 
 app.get('/api/getTrades', (req, res) => {
-  if (trades.length === 0) {
-    try {
-      const tradesJson = JSON.parse(trades);
-      trades = tradesJson.data;
-      res.send(tradesJson);
-    } catch (e) {
-      console.log(e);
-      res.send(JSON.stringify({ data: [] }));
-    }
+  try {
+    const tradesJson = JSON.stringify(trades);
+    res.send(tradesJson);
+  } catch (e) {
+    console.log(e);
+    res.send(JSON.stringify([]));
   }
 });
   
 app.get('/api/getStocks', (req, res) => {
-  if (stocks.length === 0) {
-    try {
-      const stocksJson = JSON.parse(stocks);
-      res.send(stocksJson);
-    } catch (e) {
-      res.send(JSON.stringify({ data: [] }));
-    }
+  try {
+    const stocksJson = JSON.stringify(stocks);
+    res.send(stocksJson);
+  } catch (e) {
+    console.log(e);
+    res.send(JSON.stringify([]));
   }
 });
   
