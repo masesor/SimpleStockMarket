@@ -1,19 +1,21 @@
+// tslint:disable-next-line
+/// <reference path="../untyped-modules.d.ts" />
 import * as React from 'react';
-import './App.css';
+import { Switch, Route, Router } from 'react-router-dom';
 
-import logo from './logo.svg';
+import { constants } from './constants';
+import { browserHistory } from './store';
+import { HomePage } from './components/homePage';
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <Router history={browserHistory}>
+          <Switch>
+            <Route exact={true} path={constants.routes.root} component={HomePage}/>
+          </Switch>
+        </Router>
       </div>
     );
   }
