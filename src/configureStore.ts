@@ -5,7 +5,7 @@ import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
 
 import { IAppState } from './models/state';
-import { appReducer } from './reducers/appReducer';
+import { appReducer } from './reducers/rootReducer';
 import { AppActionTypes } from './actions/actionTypes';
 import { INITIAL_STATE } from './reducers/initialState';
 import { systemEffects } from './effects/systemEffects';
