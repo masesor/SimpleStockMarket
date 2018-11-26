@@ -7,5 +7,5 @@ export const formatDateAsString = (date:Date):string => {
 };
 
 export function toFinancial(value:Big):number {
-  return parseFloat(value.round(2, 0).toFixed(2));
+  return parseFloat(value.toFixed(2));
 }

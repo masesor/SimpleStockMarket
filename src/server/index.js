@@ -9,9 +9,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 let trades = [];
-let stocks = [];
+let stocks = {}; // use key->value so we can update stock data
 
 app.use(express.static('dist'));
+
+const randomNumber = (precision, min, max) => 
+  Math.floor(Math.random() * (max * precision - min * precision) + min * precision) / (min*precision);
 
 const createTrade = (request) => (
   {
@@ -38,10 +41,10 @@ const createStock = (request) => ({
   stockType: "Common",
   ticker: request.ticker,
   stockType: 'Common',
-  lastDividend: Math.floor(Math.random() * 100),
+  lastDividend: 0,
   fixedDividend: null, // null for Common stock
-  parValue: Math.floor(Math.random() * 100),
-  price: parseFloat(request.tradePrice) + Math.random()
+  parValue: randomNumber(1, 10, 1000),
+  price: parseFloat(request.tradePrice) + parseFloat(randomNumber(100, 1, 20))
 });
 
 
@@ -57,7 +60,7 @@ app.get('/api/getTrades', (req, res) => {
   
 app.get('/api/getStocks', (req, res) => {
   try {
-    const stocksJson = JSON.stringify(stocks);
+    const stocksJson = JSON.stringify(Object.values(stocks));
     res.send(stocksJson);
   } catch (e) {
     console.log(e);
@@ -75,7 +78,7 @@ app.post('/api/submitTrade', (req, res) => {
     const trade = createTrade(tradeRequest);
     trades.push(trade);
 
-    const stockDetail = stocks.find((stock) => stock.ticker === trade.ticker);
+    const stockDetail = stocks[tradeRequest.ticker];
     if (!stockDetail) {
       // Create stock if not present
       stock = createStock(tradeRequest);
