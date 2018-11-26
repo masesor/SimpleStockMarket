@@ -7,9 +7,5 @@ export interface IProps {
 }
 
 export const HomePageView = (props:IProps) => (
-    <div className="App">
-        <header className="App-header">
-            <h1 className="App-title">Welcome {props.value}</h1>
-        </header>
-    </div>
+    <p>home page</p>
 );

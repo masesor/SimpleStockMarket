@@ -32,7 +32,8 @@
       "redux-devtools-extension",
       "history",
       "lodash",
-      "rxjs"
+      "rxjs",
+      "@material-ui"
     ],
     "typedef-whitespace": [
       true,
