@@ -5,6 +5,7 @@ import { TradeTable } from 'src/components/tradeTable';
 import { Grid, Button, WithStyles, Theme, createStyles } from '@material-ui/core';
 import { isSmartphone } from 'src/responsive';
 import { WithWidth } from '@material-ui/core/withWidth';
+import { NewTradeForm } from 'src/components/newTradeForm';
 
 export const styles = (theme:Theme) => createStyles({
     root: {
@@ -32,11 +33,7 @@ export const HomePageView = (props: IProps) => (
         alignItems={'flex-start'}
         justify={'flex-start'}
     >
-        {/*   <TodoDialog
-          actions={actions}
-          open={this.state.open}
-          onClose={() => this.setState({ open: false })}
-        /> */}
+        <NewTradeForm />
         <Grid item xs={12}>
             <Button
                 className={props.classes.button}
