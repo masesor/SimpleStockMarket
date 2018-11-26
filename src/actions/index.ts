@@ -1,5 +1,6 @@
 import { AppActionTypes } from './actionTypes';
-import { ITrade, IStock } from 'src/models/trade';
+import { ITrade } from 'src/models/trade';
+import { IStock } from 'src/models/stock';
 import { INewTradeForm } from 'src/models/form';
 
 export enum AppActions {

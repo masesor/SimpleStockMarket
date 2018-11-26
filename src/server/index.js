@@ -15,6 +15,7 @@ app.use(express.static('dist'));
 
 const createTrade = (request) => (
   {
+    buySellInd: request.buySellInd,
     id: uuidv1(), // Time based ID
     ticker: request.ticker,
     tradePrice: parseFloat(request.tradePrice),
@@ -24,13 +25,23 @@ const createTrade = (request) => (
   }
 );
 
+/**
+ * Creates a stock
+ * 
+ * Some values are using mock (random) data.
+ * @param {Stock request} request 
+ */
 const createStock = (request) => ({
+  fixedDividend: null, // null for Common stock
+  lastDividend: 0,
+  parValue: randomNumber(1, 10, 1000),
+  stockType: "Common",
   ticker: request.ticker,
-  type: 'Common',
-  lastDividend: Math.random(),
-  fixedDividend: null,
+  stockType: 'Common',
+  lastDividend: Math.floor(Math.random() * 100),
+  fixedDividend: null, // null for Common stock
   parValue: Math.floor(Math.random() * 100),
-  currentPrice: request.tradePrice + Math.random()
+  price: parseFloat(request.tradePrice) + Math.random()
 });
 
 
@@ -68,7 +79,14 @@ app.post('/api/submitTrade', (req, res) => {
     if (!stockDetail) {
       // Create stock if not present
       stock = createStock(tradeRequest);
-      stocks.push(stock);
+      stocks[tradeRequest.ticker] = stock;
+    } else {
+      // Update existing with new dividend and price details
+      const updatedStock = {
+        ...stockDetail,
+        lastDividend: stockDetail.lastDividend + randomNumber(1, 1, 5),
+      };
+      stocks[tradeRequest.ticker] = updatedStock;
     }
   
     res.send(

@@ -12,8 +12,3 @@ export interface ITrade {
   tradeDate:Date;
   tradeValue:number;
 }
-
-export enum IStockType {
-    Common = 'Common',
-    Preferred = 'Preferred'
-}

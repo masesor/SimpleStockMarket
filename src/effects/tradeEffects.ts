@@ -6,7 +6,8 @@ import { of, iif } from 'rxjs';
 import { isNil } from 'lodash';
 
 import { AppActions, fetchStocksSuccces, fetchTradesSuccces, submitTradeSuccess, submitTradeError, toggleNewTradeFormDialog } from 'src/actions';
-import { IStock, ITrade } from 'src/models/trade';
+import { ITrade } from 'src/models/trade';
+import { IStock } from 'src/models/stock';
 import { constants } from 'src/constants';
 import { IAppState } from 'src/models/state';
 import { INewTradeForm } from 'src/models/form';

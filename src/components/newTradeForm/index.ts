@@ -25,12 +25,12 @@ const validate = (values: INewTradeForm, props: IProps & IDispatchProps): FormEr
         errors.quantity = 'Required';
     }
 
-    if (isNaN(tradePrice)) {
-        errors.tradePrice = 'Enter a number';
+    if (isNaN(tradePrice) || tradePrice <= 0) {
+        errors.tradePrice = 'Enter a number > 0';
     }
 
-    if (isNaN(quantity)) {
-        errors.quantity = 'Enter a number';
+    if (isNaN(quantity) || quantity <= 0) {
+        errors.quantity = 'Enter a number > 0';
     }
 
     return errors;

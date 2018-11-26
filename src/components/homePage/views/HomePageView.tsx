@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import './HomePageView.css';
 import { TradeTable } from 'src/components/tradeTable';
 import { Grid, Button, WithStyles, Theme, createStyles } from '@material-ui/core';
 import { isSmartphone } from 'src/responsive';
 import { WithWidth } from '@material-ui/core/withWidth';
 import { NewTradeFormDialog } from 'src/components/newTradeFormDialog';
+import { StockDetailsTable } from 'src/components/stockDetailsTable';
 
 export const styles = (theme:Theme) => createStyles({
     root: {
@@ -36,6 +36,7 @@ export const HomePageView = (props:IProps & IDispatchProps) => (
         className={isSmartphone(props.width) ? props.classes.mobileRoot : props.classes.root}
         alignItems={'flex-start'}
         justify={'flex-start'}
+        spacing={40}
     >
         <NewTradeFormDialog />
         <Grid item xs={12}>
@@ -49,6 +50,9 @@ export const HomePageView = (props:IProps & IDispatchProps) => (
         </Grid>
         <Grid item xs={12}>
             <TradeTable />
+        </Grid>
+        <Grid item xs={12}>
+            <StockDetailsTable />
         </Grid>
     </Grid>
 );
