@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
-import { getTrades } from '../../selectors/testSelectors';
+import { getIsFormDialogOpen } from 'src/selectors/formSelectors';
 
 export default createSelector(
-  getTrades,
-  (trades) => ({
-    value: trades
+  getIsFormDialogOpen,
+  (isOpen) => ({
+    isOpen
   })
 );

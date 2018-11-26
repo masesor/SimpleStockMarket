@@ -8,7 +8,7 @@ export interface IStock {
 }
 
 export interface ITrade {
-    id:string;
+    id?:string;
     ticker:string;
     tradePrice:number;
     quantity:number;

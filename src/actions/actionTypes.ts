@@ -9,7 +9,8 @@ export type AppActionTypes =
  IFetchStocks | 
  IFetchStocksSuccess |
  ISubmitTrade |
- ISubmitTradeSuccess
+ ISubmitTradeSuccess |
+ IUpdateFormField
 
 export interface IApplicationLoad extends Action {
 type:AppActions.APPLICATION_LOAD;
@@ -35,9 +36,15 @@ export interface IFetchStocksSuccess extends Action {
 
 export interface ISubmitTrade {
     type:AppActions.SUBMIT_TRADE;
-  }
-  
-  export interface ISubmitTradeSuccess {
+}
+
+export interface ISubmitTradeSuccess {
     type:AppActions.SUBMIT_TRADE_SUCCESS;
-  }
+}
+
+export interface IUpdateFormField {
+    type:AppActions.UPDATE_FORM_FIELD;
+    payload:{ [id:string]:any }
+}
+
 

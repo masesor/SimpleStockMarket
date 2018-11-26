@@ -4,5 +4,6 @@ import { withStyles, withWidth } from '@material-ui/core';
 
 import { NewTradeFormView, styles } from './views/NewTradeFormView';
 import selector from './selector';
+import actions from './actions';
 
-export const NewTradeForm = withRoot(withStyles(styles)(connect(selector)(withWidth()(NewTradeFormView))));
+export const NewTradeForm = withRoot(withStyles(styles)(connect(selector, actions)(withWidth()(NewTradeFormView))));

@@ -3,12 +3,17 @@ import { ITrade, IStock } from 'src/models/trade';
 
 export enum AppActions {
     APPLICATION_LOAD = 'APPLICATION_LOAD',
+
     FETCH_TRADES = 'FETCH_TRADES',
     FETCH_TRADES_SUCCESS = 'FETCH_TRADES_SUCCESS',
+    
     FETCH_STOCKS = 'FETCH_STOCKS',
     FETCH_STOCKS_SUCCESS = 'FETCH_STOCKS_SUCCESS',
+    
     SUBMIT_TRADE = 'SUBMIT_TRADE',
-    SUBMIT_TRADE_SUCCESS = 'SUBMIT_TRADE_SUCCESS'
+    SUBMIT_TRADE_SUCCESS = 'SUBMIT_TRADE_SUCCESS',
+
+    UPDATE_FORM_FIELD = 'UPDATE_FORM_FIELD'
 }
 
 export const applicationLoad = ():AppActionTypes => ({
@@ -31,4 +36,9 @@ export const fetchStocks = ():AppActionTypes => ({
 export const fetchStocksSuccces = (stocks:IStock[]):AppActionTypes => ({
     type: AppActions.FETCH_STOCKS_SUCCESS,
     payload: { stocks }
+});
+
+export const updateFormField = (payload:{ [id:string]:any }):AppActionTypes => ({
+    type: AppActions.UPDATE_FORM_FIELD,
+    payload
 });

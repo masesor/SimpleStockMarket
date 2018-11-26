@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getTrades } from '../../selectors/testSelectors';
+import { getTrades } from '../../selectors/tradeSelectors';
 
 export default createSelector(
   getTrades,

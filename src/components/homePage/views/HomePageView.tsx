@@ -26,7 +26,11 @@ export const styles = (theme:Theme) => createStyles({
 export interface IProps extends WithStyles<typeof styles>, WithWidth {
 }
 
-export const HomePageView = (props: IProps) => (
+export interface IDispatchProps {
+    updateFormField:(payload:{ [id:string]:any }) => any;
+}
+
+export const HomePageView = (props:IProps & IDispatchProps) => (
     <Grid
         container
         className={isSmartphone(props.width) ? props.classes.mobileRoot : props.classes.root}
@@ -39,7 +43,7 @@ export const HomePageView = (props: IProps) => (
                 className={props.classes.button}
                 variant="contained"
                 color="secondary"
-                onClick={() => undefined}>
+                onClick={() => props.updateFormField( { isOpen: true })}>
                 Book Trade
         </Button>
         </Grid>

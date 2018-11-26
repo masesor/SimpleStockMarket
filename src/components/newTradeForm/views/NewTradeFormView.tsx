@@ -14,8 +14,12 @@ export interface IProps extends WithStyles<typeof styles>, WithWidth {
     isOpen:boolean;
 }
 
-export const NewTradeFormView = (props: IProps) => (
-    <Dialog open={props.isOpen} onClose={() => undefined}>
+export interface IDispatchProps {
+    updateFormField:(payload:{ [id:string]:any }) => any;
+}
+
+export const NewTradeFormView = (props:IProps & IDispatchProps) => (
+    <Dialog open={props.isOpen}>
         <DialogTitle>Book a new trade</DialogTitle>
         <TextField
             id="trade-symbol"
@@ -24,11 +28,11 @@ export const NewTradeFormView = (props: IProps) => (
             className={props.classes.textField}
         />
         <DialogActions>
+            <Button color="secondary" onClick={() => props.updateFormField( { isOpen: false })}>
+                Cancel
+            </Button>
             <Button color="primary" onClick={() => undefined}>
                 Submit
-            </Button>
-            <Button color="secondary" onClick={() => undefined}>
-                Cancel
             </Button>
         </DialogActions>
     </Dialog>
