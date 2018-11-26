@@ -11,6 +11,7 @@ export type AppActionTypes =
  IFetchStocksSuccess |
  ISubmitTrade |
  ISubmitTradeSuccess |
+ ISubmitTradeError |
  IToggleNewTradeFormDialog
 
 export interface IApplicationLoad extends Action {
@@ -23,7 +24,7 @@ export interface IFetchTrades extends Action {
 
 export interface IFetchTradesSuccess extends Action {
     type: AppActions.FETCH_TRADES_SUCCESS,
-    payload: { trades: ITrade[] }
+    payload: ITrade[]
 }
 
 export interface IFetchStocks extends Action {
@@ -32,7 +33,7 @@ export interface IFetchStocks extends Action {
 
 export interface IFetchStocksSuccess extends Action {
     type: AppActions.FETCH_STOCKS_SUCCESS,
-    payload: { stocks: IStock[] }
+    payload: IStock[]
 }
 
 export interface ISubmitTrade {
@@ -42,6 +43,10 @@ export interface ISubmitTrade {
 
 export interface ISubmitTradeSuccess {
     type:AppActions.SUBMIT_TRADE_SUCCESS
+}
+
+export interface ISubmitTradeError {
+    type:AppActions.SUBMIT_TRADE_ERROR
 }
 
 export interface IToggleNewTradeFormDialog {

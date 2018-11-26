@@ -19,8 +19,8 @@ const createTrade = (request) => (
     ticker: request.ticker,
     tradePrice: parseFloat(request.tradePrice),
     quantity: parseFloat(request.quantity),
-    tradeTime: new Date(),
-    value: parseFloat(request.tradePrice) * parseFloat(request.quantity),
+    tradeDate: new Date(),
+    tradeValue: parseFloat(request.tradePrice) * parseFloat(request.quantity),
   }
 );
 
@@ -56,7 +56,6 @@ app.get('/api/getStocks', (req, res) => {
   
 app.post('/api/submitTrade', (req, res) => {
   const tradeRequest = req.body;
-  console.log(tradeRequest);
   if (tradeRequest.tradePrice === null || tradeRequest.quantity === null) {
     res.status(400).json({ error: 'Invalid input provided to submit trade' });
   }

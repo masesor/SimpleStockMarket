@@ -9,9 +9,11 @@ import { rootReducer } from './reducers/rootReducer';
 import { AppActionTypes } from './actions/actionTypes';
 import { INITIAL_STATE } from './reducers/initialState';
 import { coreEffects } from './effects/coreEffects';
+import { tradeEffects } from './effects/tradeEffects';
 
 export const rootEpic:Epic<Action, Action, any, any> = combineEpics(
     coreEffects,
+    tradeEffects
 );
 
 const browserHistory = createHistory();

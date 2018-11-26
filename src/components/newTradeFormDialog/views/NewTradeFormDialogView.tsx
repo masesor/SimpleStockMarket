@@ -13,7 +13,6 @@ export interface IProps extends WithStyles<typeof styles>, WithWidth {
 }
 
 export interface IDispatchProps {
-    updateFormField:(payload:{ [id:string]:any }) => any;
 }
 
 export const NewTradeFormDialogView = (props:IProps & IDispatchProps) => (

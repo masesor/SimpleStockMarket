@@ -20,34 +20,34 @@ export interface IProps extends WithStyles<typeof styles>, WithWidth {
 }
 
 export const TradeTableView = (props:IProps) => (
-    <Paper className={props.classes.root}>
-      <Table className={props.classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Stock Symbol</TableCell>
-            <TableCell>Type</TableCell>
-            <TableCell numeric>Trade Price (£)</TableCell>
-            <TableCell>Trade Date</TableCell>
-            <TableCell numeric>Quantity</TableCell>
-            <TableCell numeric>Value</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.trades.map(trade => {
-            return (
-              <TableRow key={trade.id}>
-                <TableCell component="th" scope="row">
-                  {trade.ticker}
-                </TableCell>
-                <TableCell>{trade.tradeType}</TableCell>
-                <TableCell numeric>{trade.tradePrice}</TableCell>
-                <TableCell>{formatDateAsString(trade.tradeDate)}</TableCell>
-                <TableCell numeric>{trade.quantity}</TableCell>
-                <TableCell numeric>{trade.tradeValue}</TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </Paper>
-)
+  <Paper className={props.classes.root}>
+    <Table className={props.classes.table}>
+      <TableHead>
+        <TableRow>
+          <TableCell>Stock Symbol</TableCell>
+          <TableCell>Buy / Sell</TableCell>
+          <TableCell numeric={true}>Trade Price (£)</TableCell>
+          <TableCell>Trade Date</TableCell>
+          <TableCell numeric={true}>Quantity</TableCell>
+          <TableCell numeric={true}>Value</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {props.trades.map((trade) => {
+          return (
+            <TableRow key={trade.id}>
+              <TableCell component="th" scope="row">
+                {trade.ticker}
+              </TableCell>
+              <TableCell>{trade.buySellInd}</TableCell>
+              <TableCell numeric={true}>{trade.tradePrice}</TableCell>
+              <TableCell>{formatDateAsString(trade.tradeDate)}</TableCell>
+              <TableCell numeric={true}>{trade.quantity}</TableCell>
+              <TableCell numeric={true}>{trade.tradeValue}</TableCell>
+            </TableRow>
+          );
+        })}
+      </TableBody>
+    </Table>
+  </Paper>
+);

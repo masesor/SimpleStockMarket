@@ -1,5 +1,5 @@
-import { updateFormField } from 'src/actions';
+import { toggleNewTradeFormDialog } from 'src/actions';
 
 export default {
-    updateFormField
+    toggleNewTradeFormDialog
 }

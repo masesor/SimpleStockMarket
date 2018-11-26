@@ -8,12 +8,12 @@ import { ITrade, IStock } from 'src/models/trade';
 
 const trades = createReducer(
   [AppActions.FETCH_TRADES_SUCCESS,
-  (state:ITrade[], payload: { trades:ITrade[] }) => payload.trades]
+  (state:ITrade[], payload:ITrade[]) => payload]
 )([]);
 
 const stocks = createReducer(
   [AppActions.FETCH_STOCKS_SUCCESS,
-  (state:ITrade[], payload: { stocks:IStock[] }) => payload.stocks]
+  (state:IStock[], payload:IStock[]) => payload]
 )([]);
 
 const isNewTradeFormOpen = createReducer(

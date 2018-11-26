@@ -13,6 +13,7 @@ export enum AppActions {
     
     SUBMIT_TRADE = 'SUBMIT_TRADE',
     SUBMIT_TRADE_SUCCESS = 'SUBMIT_TRADE_SUCCESS',
+    SUBMIT_TRADE_ERROR = 'SUBMIT_TRADE_ERROR',
 
     TOGGLE_NEW_TRADE_FORM_DIALOG = 'TOGGLE_NEW_TRADE_FORM_DIALOG'
 }
@@ -27,7 +28,7 @@ export const fetchTrades = ():AppActionTypes => ({
 
 export const fetchTradesSuccces = (trades:ITrade[]):AppActionTypes => ({
     type: AppActions.FETCH_TRADES_SUCCESS,
-    payload: { trades }
+    payload: trades
 });
 
 export const fetchStocks = ():AppActionTypes => ({
@@ -36,7 +37,7 @@ export const fetchStocks = ():AppActionTypes => ({
 
 export const fetchStocksSuccces = (stocks:IStock[]):AppActionTypes => ({
     type: AppActions.FETCH_STOCKS_SUCCESS,
-    payload: { stocks }
+    payload: stocks
 });
 
 export const submitTrade = (tradeDetails:INewTradeForm):AppActionTypes => ({
@@ -44,7 +45,14 @@ export const submitTrade = (tradeDetails:INewTradeForm):AppActionTypes => ({
     payload: { tradeDetails }
 });
 
+export const submitTradeSuccess = ():AppActionTypes => ({
+    type: AppActions.SUBMIT_TRADE_SUCCESS
+});
 
-export const updateFormField = ():AppActionTypes => ({
+export const submitTradeError = ():AppActionTypes => ({
+    type: AppActions.SUBMIT_TRADE_ERROR
+});
+
+export const toggleNewTradeFormDialog = ():AppActionTypes => ({
     type: AppActions.TOGGLE_NEW_TRADE_FORM_DIALOG
 });

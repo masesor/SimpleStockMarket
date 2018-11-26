@@ -1,9 +1,11 @@
 import { createSelector } from 'reselect';
-import { getIsNewTradeFormOpen } from 'src/selectors/formSelectors';
+import { getIsNewTradeFormOpen } from '../../selectors/formSelectors';
+import { INTIAL_FORM_STATE } from '../../models/form';
 
 export default createSelector(
   getIsNewTradeFormOpen,
   (isOpen) => ({
-    isOpen
+    isOpen,
+    initialValues: INTIAL_FORM_STATE
   })
 );

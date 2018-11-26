@@ -1,23 +1,19 @@
-export interface IStock {
-    ticker:string;
-    stockType:string;
-    price:number;
-    lastDividend:number;
-    fixedDividend?:number;
-    parValue:number
+export enum BuySellInd {
+  Buy = 'B',
+  Sell = 'S'
 }
 
 export interface ITrade {
-    id?:string;
-    ticker:string;
-    tradePrice:number;
-    quantity:number;
-    tradeType:IBuySellInd;
-    tradeDate:Date;
-    tradeValue:number
+  id?:string;
+  ticker:string;
+  buySellInd:BuySellInd;
+  tradePrice:number;
+  quantity:number;
+  tradeDate:Date;
+  tradeValue:number;
 }
 
-export enum IBuySellInd {
-    Buy = 'B',
-    Sell = 'S'
+export enum IStockType {
+    Common = 'Common',
+    Preferred = 'Preferred'
 }

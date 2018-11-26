@@ -27,7 +27,7 @@ export interface IProps extends WithStyles<typeof styles>, WithWidth {
 }
 
 export interface IDispatchProps {
-    updateFormField:(payload:{ [id:string]:any }) => any;
+    toggleNewTradeFormDialog:() => any;
 }
 
 export const HomePageView = (props:IProps & IDispatchProps) => (
@@ -43,7 +43,7 @@ export const HomePageView = (props:IProps & IDispatchProps) => (
                 className={props.classes.button}
                 variant="contained"
                 color="secondary"
-                onClick={() => props.updateFormField( { isOpen: true })}>
+                onClick={() => props.toggleNewTradeFormDialog()}>
                 Book Trade
         </Button>
         </Grid>

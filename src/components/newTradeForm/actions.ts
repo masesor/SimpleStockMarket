@@ -1,6 +1,6 @@
-import { updateFormField, submitTrade } from 'src/actions';
+import { toggleNewTradeFormDialog, submitTrade } from 'src/actions';
 
 export default {
-    updateFormField,
+    toggleNewTradeFormDialog,
     submitTrade
 }

@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
-import { getTrades } from '../../selectors/tradeSelectors';
+import { getTradesInReverseChronologicalOrder } from '../../selectors/tradeSelectors';
 
 export default createSelector(
-  getTrades,
+  getTradesInReverseChronologicalOrder,
   (trades) => ({
     trades
   })
