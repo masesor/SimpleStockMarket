@@ -39,7 +39,7 @@ interface IStateProps {
 class App extends React.Component<IProps, IStateProps> {
 
   state = {
-    mobileOpen: true,
+    mobileOpen: false,
   };
 
   routes = (
