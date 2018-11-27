@@ -1,11 +1,11 @@
 import * as React from 'react';
-
-import { TradeTable } from 'src/components/tradeTable';
-import { Grid, Button, WithStyles, Theme, createStyles } from '@material-ui/core';
-import { isSmartphone } from 'src/responsive';
 import { WithWidth } from '@material-ui/core/withWidth';
-import { NewTradeFormDialog } from 'src/components/newTradeFormDialog';
-import { StockDetailsTable } from 'src/components/stockDetailsTable';
+import { Grid, Button, WithStyles, Theme, createStyles } from '@material-ui/core';
+
+import { TradeTable } from '../../../components/tradeTable';
+import { isSmartphone } from '../../../responsive';
+import { NewTradeFormDialog } from '../../../components/newTradeFormDialog';
+import { StockDetailsTable } from '../../../components/stockDetailsTable';
 
 export const styles = (theme:Theme) => createStyles({
     root: {

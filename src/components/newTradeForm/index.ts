@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import withRoot from 'src/withRoot';
 import { withStyles, withWidth } from '@material-ui/core';
 
+import withRoot from '../../withRoot';
 import { NewTradeFormView, styles, IProps, IDispatchProps } from './views/NewTradeFormView';
 import selector from './selector';
 import actions from './actions';
 import { reduxForm, FormErrors } from 'redux-form';
-import { INewTradeForm } from 'src/models/form';
+import { INewTradeForm } from '../../models/form';
 
 const validate = (values: INewTradeForm, props: IProps & IDispatchProps): FormErrors<INewTradeForm> => {
     const { ticker, tradePrice, quantity } = values;

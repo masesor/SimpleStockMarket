@@ -2,7 +2,7 @@ import * as React from 'react';
 import { WithStyles, Theme, createStyles, Dialog, DialogTitle } from '@material-ui/core';
 import { WithWidth } from '@material-ui/core/withWidth';
 
-import { NewTradeForm } from 'src/components/newTradeForm';
+import { NewTradeForm } from '../../../components/newTradeForm';
 
 export const styles = (theme: Theme) => createStyles({
     

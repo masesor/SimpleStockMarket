@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import withRoot from 'src/withRoot';
 import { withStyles, withWidth } from '@material-ui/core';
 
+import withRoot from '../../withRoot';
 import { NewTradeFormDialogView, styles } from './views/NewTradeFormDialogView';
 import selector from './selector';
 import actions from './actions';

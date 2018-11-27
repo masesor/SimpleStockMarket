@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getIsNewTradeFormOpen } from 'src/selectors/formSelectors';
+import { getIsNewTradeFormOpen } from '../../selectors/formSelectors';
 
 export default createSelector(
   getIsNewTradeFormOpen,

@@ -1,4 +1,4 @@
-import { toggleNewTradeFormDialog, submitTrade } from 'src/actions';
+import { toggleNewTradeFormDialog, submitTrade } from '../../actions';
 
 export default {
     toggleNewTradeFormDialog,

@@ -77,6 +77,7 @@
     "@types/react-redux": "^6.0.9",
     "@types/react-router-dom": "^4.3.1",
     "@types/react-router-redux": "^5.0.16",
+    "@types/react-test-renderer": "^16.0.3",
     "@types/redux-form": "^7.4.12",
     "babel-eslint": "^10.0.1",
     "concurrently": "^4.1.0",
@@ -118,6 +119,7 @@
     "testPathIgnorePatterns": [
       "<rootDir>/(build|docs|node_modules)/"
     ],
+    "setupTestFrameworkScriptFile": "<rootDir>/src/__test_utils__/setupTests.js",
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     },
