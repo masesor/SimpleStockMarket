@@ -1,6 +1,6 @@
 export enum StockType {
-    Common = 'Common',
-    Preferred = 'Preferred'
+  Common = 'Common',
+  Preferred = 'Preferred'
 }
 
 export interface IStock {

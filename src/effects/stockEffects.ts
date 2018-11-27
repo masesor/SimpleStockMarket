@@ -14,11 +14,10 @@ export const fetchStocksEffect:Epic<AnyAction, AnyAction> = (action$, store$, { 
       return getJSON(`${constants.api.BASE_API_URL}/${constants.api.GET_STOCKS}`)
         .pipe(
           map((response:IStock[]) => fetchStocksSuccces(response))
-        )
+        );
     }),
-    );
+  );
 
-export const stockEffects: Epic<Action, Action, IAppState, any> = combineEpics(
-    fetchStocksEffect
+export const stockEffects:Epic<Action, Action, IAppState, any> = combineEpics(
+  fetchStocksEffect
 );
-    

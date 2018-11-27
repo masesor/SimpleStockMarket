@@ -4,18 +4,14 @@ import { WithWidth } from '@material-ui/core/withWidth';
 
 import { NewTradeForm } from '../../../components/newTradeForm';
 
-export const styles = (theme: Theme) => createStyles({
-    
+export const styles = (theme:Theme) => createStyles({
 });
 
 export interface IProps extends WithStyles<typeof styles>, WithWidth {
     isOpen:boolean;
 }
 
-export interface IDispatchProps {
-}
-
-export const NewTradeFormDialogView = (props:IProps & IDispatchProps) => (
+export const NewTradeFormDialogView = (props:IProps) => (
     <Dialog open={props.isOpen}>
         <DialogTitle>Book a new trade</DialogTitle>
         <NewTradeForm />

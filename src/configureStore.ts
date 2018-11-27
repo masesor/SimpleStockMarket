@@ -14,20 +14,20 @@ import { tradeEffects } from './effects/tradeEffects';
 import { stockEffects } from './effects/stockEffects';
 
 export const rootEpic:Epic<Action, Action, any, any> = combineEpics(
-    coreEffects,
-    tradeEffects,
-    stockEffects
+  coreEffects,
+  tradeEffects,
+  stockEffects
 );
 
 const browserHistory = createHistory();
 const epicMiddleware = createEpicMiddleware({
-    dependencies: { getJSON: ajax.getJSON }
+  dependencies: { getJSON: ajax.getJSON }
 });
 
 const compose:(...args:any[]) => any = process.env.NODE_ENV === 'production' ? composeProd : composeDev;
 
 const middleware = compose(
-    applyMiddleware(epicMiddleware, routerMiddleware(browserHistory))
+  applyMiddleware(epicMiddleware, routerMiddleware(browserHistory))
 );
 const store = createStore<IAppState, AppActionTypes, IAppState, IAppState>(rootReducer, INITIAL_STATE, middleware);
 

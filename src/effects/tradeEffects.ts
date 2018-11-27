@@ -1,16 +1,11 @@
 import { Epic, ofType, combineEpics } from 'redux-observable';
 import { AnyAction, Action } from 'redux';
 import { switchMap, map } from 'rxjs/internal/operators';
-// import { of, iif } from 'rxjs';
-// import { isNil } from 'lodash';
 
-import { AppActions, fetchStocksSuccces, fetchTradesSuccces, toggleNewTradeFormDialog } from '../actions';
+import { AppActions, fetchTradesSuccces, toggleNewTradeFormDialog } from '../actions';
 import { ITrade } from '../models/trade';
-import { IStock } from '../models/stock';
 import { constants } from '../constants';
 import { IAppState } from '../models/state';
-// import { INewTradeForm } from 'src/models/form';
-// import { getNewTradePayload } from 'src/utils/mappers';
 
 export const fetchTradesEffect:Epic<AnyAction, AnyAction> = (action$, store$, { getJSON }) =>
   action$.pipe(
@@ -19,9 +14,9 @@ export const fetchTradesEffect:Epic<AnyAction, AnyAction> = (action$, store$, { 
       return getJSON(`${constants.api.BASE_API_URL}/${constants.api.GET_TRADES}`)
         .pipe(
           map((response:ITrade[]) => {
-              return fetchTradesSuccces(response)
+            return fetchTradesSuccces(response);
           })
-        )
+        );
     }),
   );
 
@@ -29,7 +24,7 @@ export const fetchTradesEffect:Epic<AnyAction, AnyAction> = (action$, store$, { 
     action$.pipe(
         ofType(AppActions.SUBMIT_TRADE),
         map((action) => action.payload.tradeDetails),
-        switchMap((tradeDetails: INewTradeForm) => 
+        switchMap((tradeDetails: INewTradeForm) =>
             ajax
                 .post(`${constants.api.BASE_API_URL}/${constants.api.SUBMIT_TRADE}`, getNewTradePayload(tradeDetails))
                 .pipe(
@@ -46,14 +41,13 @@ export const fetchTradesEffect:Epic<AnyAction, AnyAction> = (action$, store$, { 
     ); */
 
 export const dismissNewTradeDialogEffect:Epic<AnyAction, AnyAction> = (action$) =>
-action$.pipe(
+  action$.pipe(
     ofType(AppActions.SUBMIT_TRADE_SUCCESS),
     map(() => toggleNewTradeFormDialog())
-);
+  );
 
 export const tradeEffects:Epic<Action, Action, IAppState, any> = combineEpics(
-    fetchTradesEffect,
-    // submitTradeEffect,
-    dismissNewTradeDialogEffect
+  fetchTradesEffect,
+  // submitTradeEffect,
+  dismissNewTradeDialogEffect
 );
-

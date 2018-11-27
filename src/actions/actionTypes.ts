@@ -1,57 +1,55 @@
 import { Action } from 'redux';
 import { AppActions } from '.';
-import { ITrade } from 'src/models/trade';
-import { IStock } from 'src/models/stock';
-import { INewTradeForm } from 'src/models/form';
+import { ITrade } from '../models/trade';
+import { IStock } from '../models/stock';
+import { INewTradeForm } from '../models/form';
 
 export type AppActionTypes =
- IApplicationLoad |
- IFetchTrades |
- IFetchTradesSuccess |
- IFetchStocks | 
- IFetchStocksSuccess |
- ISubmitTrade |
- ISubmitTradeSuccess |
- ISubmitTradeError |
- IToggleNewTradeFormDialog
+    IApplicationLoad |
+    IFetchTrades |
+    IFetchTradesSuccess |
+    IFetchStocks |
+    IFetchStocksSuccess |
+    ISubmitTrade |
+    ISubmitTradeSuccess |
+    ISubmitTradeError |
+    IToggleNewTradeFormDialog;
 
 export interface IApplicationLoad extends Action {
-type:AppActions.APPLICATION_LOAD
+    type:AppActions.APPLICATION_LOAD;
 }
 
 export interface IFetchTrades extends Action {
-    type: AppActions.FETCH_TRADES
+    type:AppActions.FETCH_TRADES;
 }
 
 export interface IFetchTradesSuccess extends Action {
-    type: AppActions.FETCH_TRADES_SUCCESS,
-    payload: ITrade[]
+    type:AppActions.FETCH_TRADES_SUCCESS;
+    payload:ITrade[];
 }
 
 export interface IFetchStocks extends Action {
-    type: AppActions.FETCH_STOCKS
+    type:AppActions.FETCH_STOCKS;
 }
 
 export interface IFetchStocksSuccess extends Action {
-    type: AppActions.FETCH_STOCKS_SUCCESS,
-    payload: IStock[]
+    type:AppActions.FETCH_STOCKS_SUCCESS;
+    payload:IStock[];
 }
 
 export interface ISubmitTrade {
-    type:AppActions.SUBMIT_TRADE,
-    payload: { tradeDetails: INewTradeForm }
+    type:AppActions.SUBMIT_TRADE;
+    payload:{ tradeDetails:INewTradeForm };
 }
 
 export interface ISubmitTradeSuccess {
-    type:AppActions.SUBMIT_TRADE_SUCCESS
+    type:AppActions.SUBMIT_TRADE_SUCCESS;
 }
 
 export interface ISubmitTradeError {
-    type:AppActions.SUBMIT_TRADE_ERROR
+    type:AppActions.SUBMIT_TRADE_ERROR;
 }
 
 export interface IToggleNewTradeFormDialog {
-    type:AppActions.TOGGLE_NEW_TRADE_FORM_DIALOG
+    type:AppActions.TOGGLE_NEW_TRADE_FORM_DIALOG;
 }
-
-

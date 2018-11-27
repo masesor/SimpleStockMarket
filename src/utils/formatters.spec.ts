@@ -3,7 +3,6 @@ import { Big } from 'big.js';
 import { formatDateAsString, toFinancial } from './formatters';
 
 describe('formatters', () => {
-
   describe('formatDateAsString', () => {
     it('returns empty string when date is null or invalid', () => {
       // Arrange

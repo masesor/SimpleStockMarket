@@ -30,7 +30,7 @@ import { browserHistory } from './configureStore';
 import { HomePage } from './components/homePage';
 import { isSmartphone } from './responsive';
 
-interface IProps extends RouteComponentProps<void>, WithStyles<typeof styles>, WithWidth {}
+interface IProps extends RouteComponentProps<void>, WithStyles<typeof styles>, WithWidth { }
 
 interface IStateProps {
   mobileOpen:boolean;
@@ -73,53 +73,53 @@ class App extends React.Component<IProps, IStateProps> {
     );
 
     return (
-        <div className={classes.root}>
-          <div className={classes.appFrame}>
-            <AppBar className={classes.appBar}>
-              <Toolbar>
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  onClick={this.handleDrawerToggle}
-                  className={classes.navIconHide}
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Typography variant="h6" color="inherit" noWrap={!isSmartphone(width)}>
-                  Trading App
-                </Typography>
-              </Toolbar>
-            </AppBar>
-            <Hidden mdUp={true}>
-              <Drawer
-                variant="temporary"
-                anchor={'left'}
-                open={this.state.mobileOpen}
-                classes={{
-                  paper: classes.drawerPaper,
-                }}
-                onClose={this.handleDrawerToggle}
-                ModalProps={{
-                  keepMounted: true, // Better open performance on mobile.
-                }}
+      <div className={classes.root}>
+        <div className={classes.appFrame}>
+          <AppBar className={classes.appBar}>
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={this.handleDrawerToggle}
+                className={classes.navIconHide}
               >
-                {drawer}
-              </Drawer>
-            </Hidden>
-            <Hidden smDown={true} implementation="css">
-              <Drawer
-                variant="permanent"
-                open={true}
-                classes={{
-                  paper: classes.drawerPaper,
-                }}
-              >
-                {drawer}
-              </Drawer>
-            </Hidden>
-            {this.routes}
-            </div>
-          </div>
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" color="inherit" noWrap={!isSmartphone(width)}>
+                Trading App
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <Hidden mdUp={true}>
+            <Drawer
+              variant="temporary"
+              anchor={'left'}
+              open={this.state.mobileOpen}
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+              onClose={this.handleDrawerToggle}
+              ModalProps={{
+                keepMounted: true, // Better open performance on mobile.
+              }}
+            >
+              {drawer}
+            </Drawer>
+          </Hidden>
+          <Hidden smDown={true} implementation="css">
+            <Drawer
+              variant="permanent"
+              open={true}
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+            >
+              {drawer}
+            </Drawer>
+          </Hidden>
+          {this.routes}
+        </div>
+      </div>
     );
   }
 }
@@ -127,45 +127,45 @@ class App extends React.Component<IProps, IStateProps> {
 const drawerWidth = 240;
 const styles = (theme:Theme) => createStyles({
   root: {
-      width: '100%',
-      height: '100%',
-      zIndex: 1,
-      overflow: 'hidden',
+    width: '100%',
+    height: '100%',
+    zIndex: 1,
+    overflow: 'hidden',
   },
   appFrame: {
-      position: 'relative',
-      display: 'flex',
-      width: '100%',
-      height: '100%',
+    position: 'relative',
+    display: 'flex',
+    width: '100%',
+    height: '100%',
   },
   appBar: {
-      zIndex: theme.zIndex.drawer + 1,
-      position: 'absolute',
+    zIndex: theme.zIndex.drawer + 1,
+    position: 'absolute',
   },
   navIconHide: {
-      [theme.breakpoints.up('md')]: {
-          display: 'none',
-      },
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
   },
   drawerHeader: theme.mixins.toolbar,
   drawerPaper: {
-      width: 250,
-      backgroundColor: theme.palette.background.default,
-      [theme.breakpoints.up('md')]: {
-          width: drawerWidth,
-          position: 'relative',
-          height: '100%',
-      },
+    width: 250,
+    backgroundColor: theme.palette.background.default,
+    [theme.breakpoints.up('md')]: {
+      width: drawerWidth,
+      position: 'relative',
+      height: '100%',
+    },
   },
   content: {
-      backgroundColor: theme.palette.background.default,
-      width: '100%',
-      height: 'calc(100% - 56px)',
-      marginTop: 56,
-      [theme.breakpoints.up('sm')]: {
-          height: 'calc(100% - 64px)',
-          marginTop: 64,
-      },
+    backgroundColor: theme.palette.background.default,
+    width: '100%',
+    height: 'calc(100% - 56px)',
+    marginTop: 56,
+    [theme.breakpoints.up('sm')]: {
+      height: 'calc(100% - 64px)',
+      marginTop: 64,
+    },
   },
 });
 

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { MuiThemeProvider, createMuiTheme, CssBaseline } from '@material-ui/core';
 
 // A theme with custom primary and secondary color.
-// It's optional.
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,

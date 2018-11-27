@@ -19,22 +19,22 @@ export const getDividendYield = (stock:IStock, currentPrice:number) => {
     dividendYield = Big(stock.fixedDividend).times(stock.parValue).div(currentPrice);
   }
 
-    return toFinancial(dividendYield);
-}
+  return toFinancial(dividendYield);
+};
 
 export const getPERatio = (stock:IStock, currentPrice:number) => !isNil(stock) && stock.lastDividend !== 0
   ? toFinancial(Big(currentPrice).div(stock.lastDividend))
   : 0;
 
 export const getGeometricMean = (trades:ITrade[]) => {
-    if (isEmpty(trades)) {
-        return 0;
-    }
-    const power = toFinancial(Big(1).div(trades.length));
-    const pricesProduct = trades.reduce((total, cur) => total * cur.tradePrice, 1)
+  if (isEmpty(trades)) {
+    return 0;
+  }
+  const power = toFinancial(Big(1).div(trades.length));
+  const pricesProduct = trades.reduce((total, cur) => total * cur.tradePrice, 1);
 
-    return toFinancial(Big(Math.pow(pricesProduct, power)));
-}
+  return toFinancial(Big(Math.pow(pricesProduct, power)));
+};
 
 export const getStockPrice = (trades:ITrade[]) => {
   if (isEmpty(trades)) {

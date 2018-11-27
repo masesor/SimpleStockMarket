@@ -1,11 +1,94 @@
 {
-  "extends": [],
-  "defaultSeverity": "warning",
+  "extends": [
+    "tslint:latest",
+    "tslint-react"
+  ],
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
       "node_modules/**/*.ts",
       "coverage/lcov-report/*.js"
+    ]
+  },
+  "rules": {
+    "jsx-wrap-multiline": false,
+    "jsx-no-multiline-js": false,
+    "jsx-no-lambda": false,
+    "trailing-comma": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "interface-over-type-literal": false,
+    "prefer-conditional-expression": false,
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ],
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": [
+      true,
+      "~",
+      "assets",
+      "redux-devtools-extension",
+      "history",
+      "lodash",
+      "rxjs",
+      "@material-ui"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      },
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    "member-access": [
+      true,
+      "no-public"
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-rest-spread",
+      "check-typecast",
+      "check-type-operator",
+      "check-preblock"
+    ],
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "public-static-field",
+          "protected-static-field",
+          "private-static-field",
+          "private-static-method",
+          "protected-static-method",
+          "public-static-method",
+          "public-constructor",
+          "protected-constructor",
+          "private-constructor",
+          "public-instance-field",
+          "protected-instance-field",
+          "private-instance-field",
+          "private-instance-method",
+          "protected-instance-method",
+          "public-instance-method"
+        ]
+      }
     ]
   }
 }

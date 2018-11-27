@@ -1,17 +1,17 @@
 import { AppActionTypes } from './actionTypes';
-import { ITrade } from 'src/models/trade';
-import { IStock } from 'src/models/stock';
-import { INewTradeForm } from 'src/models/form';
+import { ITrade } from '../models/trade';
+import { IStock } from '../models/stock';
+import { INewTradeForm } from '../models/form';
 
 export enum AppActions {
     APPLICATION_LOAD = 'APPLICATION_LOAD',
 
     FETCH_TRADES = 'FETCH_TRADES',
     FETCH_TRADES_SUCCESS = 'FETCH_TRADES_SUCCESS',
-    
+
     FETCH_STOCKS = 'FETCH_STOCKS',
     FETCH_STOCKS_SUCCESS = 'FETCH_STOCKS_SUCCESS',
-    
+
     SUBMIT_TRADE = 'SUBMIT_TRADE',
     SUBMIT_TRADE_SUCCESS = 'SUBMIT_TRADE_SUCCESS',
     SUBMIT_TRADE_ERROR = 'SUBMIT_TRADE_ERROR',

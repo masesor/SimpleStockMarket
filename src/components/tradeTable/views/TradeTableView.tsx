@@ -1,22 +1,33 @@
 
 import * as React from 'react';
-import { Paper, Table, TableHead, TableRow, TableCell, TableBody, WithStyles, createStyles, Theme } from '@material-ui/core';
+import {
+  Paper,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  WithStyles,
+  createStyles,
+  Theme
+} from '@material-ui/core';
 import { WithWidth } from '@material-ui/core/withWidth';
+
 import { ITrade } from '../../../models/trade';
 import { formatDateAsString } from '../../../utils/formatters';
 
 export const styles = (theme:Theme) => createStyles({
-    root: {
-        width: '100%',
-        overflowX: 'auto',
-    },
-    table: {
-        minWidth: 700,
-    },
+  root: {
+    width: '100%',
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 700,
+  },
 });
 
 export interface IProps extends WithStyles<typeof styles>, WithWidth {
-    trades:ITrade[];
+  trades:ITrade[];
 }
 
 export const TradeTableView = (props:IProps) => (

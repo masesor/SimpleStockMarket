@@ -6,7 +6,7 @@ import { applicationLoad } from '../actions';
 import { IAppState } from '../models/state';
 
 /**
- *  Initial effect to trigger data requests
+ *  Initial effect to trigger service requests
  */
 export const applicationLoadEffect:Epic<AnyAction, AnyAction, IAppState> = () => of(applicationLoad());
 

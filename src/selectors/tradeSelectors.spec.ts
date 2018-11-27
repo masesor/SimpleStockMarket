@@ -25,7 +25,7 @@ describe('tradeSelectors', () => {
         tradeDate: new Date(),
         tradeValue: 5
       }];
-      
+
       const state = {
         trades
       } as any;
@@ -61,7 +61,7 @@ describe('tradeSelectors', () => {
         quantity: 5,
         tradeDate: new Date('2018-11-25T12:00:00Z'),
         tradeValue: 5
-      }
+      };
       const tradeTwo = {
         id: '002',
         ticker: 'TEST1',
@@ -69,7 +69,7 @@ describe('tradeSelectors', () => {
         quantity: 5,
         tradeDate: new Date('2018-11-15T12:00:00Z'),
         tradeValue: 5
-      }
+      };
 
       const tradeThree = {
         id: '003',
@@ -78,11 +78,11 @@ describe('tradeSelectors', () => {
         quantity: 5,
         tradeDate: new Date('2018-11-30T12:00:00Z'),
         tradeValue: 5
-      }
+      };
 
       const unsortedTrades = [tradeOne, tradeTwo, tradeThree];
       const tradesSortedByReverseDate = [tradeThree, tradeOne, tradeTwo];
-      
+
       const state = {
         trades: unsortedTrades
       } as any;

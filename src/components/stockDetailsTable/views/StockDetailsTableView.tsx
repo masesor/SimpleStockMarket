@@ -1,20 +1,31 @@
 import * as React from 'react';
-import { Paper, Table, TableHead, TableRow, TableCell, TableBody, WithStyles, createStyles, Theme } from '@material-ui/core';
+import {
+  Paper,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  WithStyles,
+  createStyles,
+  Theme
+} from '@material-ui/core';
+
 import { WithWidth } from '@material-ui/core/withWidth';
-import { IStockDetail } from 'src/models/stock';
+import { IStockDetail } from '../../../models/stock';
 
 export const styles = (theme:Theme) => createStyles({
-    root: {
-        width: '100%',
-        overflowX: 'auto',
-    },
-    table: {
-        minWidth: 700,
-    },
+  root: {
+    width: '100%',
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 700,
+  },
 });
 
 export interface IProps extends WithStyles<typeof styles>, WithWidth {
-    stockDetails:IStockDetail[];
+  stockDetails:IStockDetail[];
 }
 
 export const StockDetailsTableView = (props:IProps) => (

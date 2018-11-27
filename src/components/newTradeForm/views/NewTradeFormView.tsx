@@ -4,9 +4,9 @@ import { WithStyles, Theme, createStyles, TextField, Button, Grid, Select, MenuI
 import { WithWidth } from '@material-ui/core/withWidth';
 import { Field, FormProps, FormErrors, InjectedFormProps } from 'redux-form';
 
-import { INewTradeForm } from 'src/models/form';
+import { INewTradeForm } from '../../../models/form';
 
-export const styles = (theme: Theme) => createStyles({
+export const styles = (theme:Theme) => createStyles({
     textField: {
         width: '80%',
         margin: 20
@@ -18,16 +18,17 @@ export interface IProps extends
     WithWidth,
     FormProps<INewTradeForm, {}, {}>,
     InjectedFormProps<INewTradeForm> {
-    isOpen: boolean;
-    onSubmit: (values: INewTradeForm, dispatch: Dispatch<AnyAction>, props: IProps) => void | FormErrors<FormData> | Promise<any>;
-    toggleNewTradeFormDialog: () => any;
+    isOpen:boolean;
+    onSubmit:(values:INewTradeForm, dispatch:Dispatch<AnyAction>, props:IProps) =>
+        void | FormErrors<FormData> | Promise<any>;
+    toggleNewTradeFormDialog:() => any;
 }
 
 export interface IDispatchProps {
-    submitTrade: (tradeDetails: INewTradeForm) => any;
+    submitTrade:(tradeDetails:INewTradeForm) => any;
 }
 
-const renderInput = (field: any) => {
+const renderInput = (field:any) => {
     const hasError = !!field.meta.error && !!field.meta.touched;
 
     return (
@@ -42,7 +43,7 @@ const renderInput = (field: any) => {
     );
 };
 
-const renderSelect = (field: any) => {
+const renderSelect = (field:any) => {
     return (
         <Select
             value={field.input.value}
@@ -58,20 +59,20 @@ const renderSelect = (field: any) => {
     );
 };
 
-const onSubmit = (tradeDetails: INewTradeForm, dispatch: Dispatch<AnyAction>, props: IProps & IDispatchProps) => {
+const onSubmit = (tradeDetails:INewTradeForm, dispatch:Dispatch<AnyAction>, props:IProps & IDispatchProps) => {
     props.submitTrade(tradeDetails);
 };
 
-export const NewTradeFormView = (props: IProps & IDispatchProps) => (
+export const NewTradeFormView = (props:IProps & IDispatchProps) => (
     <form onSubmit={props.handleSubmit(onSubmit)}>
         <Grid
-            container
+            container={true}
             direction="column"
             justify="flex-start"
             alignItems="center"
             spacing={16}
         >
-            <Grid item xs={12}>
+            <Grid item={true} xs={12}>
                 <Field
                     name="ticker"
                     component={renderInput}
@@ -98,7 +99,7 @@ export const NewTradeFormView = (props: IProps & IDispatchProps) => (
                 />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item={true} xs={12}>
                 <Field
                     name="quantity"
                     component={renderInput}
@@ -107,13 +108,13 @@ export const NewTradeFormView = (props: IProps & IDispatchProps) => (
                 />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item={true} xs={12}>
                 <Button color="secondary" onClick={() => props.toggleNewTradeFormDialog()}>
                     Cancel
-                 </Button>
+         </Button>
                 <Button color="primary" type="submit">
                     Submit
-                </Button>
+        </Button>
             </Grid>
         </Grid>
     </form>

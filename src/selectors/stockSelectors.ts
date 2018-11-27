@@ -10,8 +10,8 @@ import {
 import { getTrades } from './tradeSelectors';
 
 export const getStocks = createSelector(
-    (state:IAppState) => state,
-    (state) => state.stocks
+  (state:IAppState) => state,
+  (state) => state.stocks
 );
 
 export const getStockDetails = createSelector(

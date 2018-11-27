@@ -9,6 +9,6 @@ export const formatDateAsString = (date:Date):string => {
 
 export function toFinancial(value:Big):number {
   return !isNil(value)
-  ? parseFloat(value.toFixed(2))
-  : 0;
+    ? parseFloat(value.toFixed(2))
+    : 0;
 }

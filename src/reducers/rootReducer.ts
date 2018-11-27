@@ -4,8 +4,8 @@ import { reducer as formReducer } from 'redux-form';
 
 import { AppActions } from '../actions';
 import { IAppState } from '../models/state';
-import { ITrade } from 'src/models/trade';
-import { IStock } from 'src/models/stock';
+import { ITrade } from '../models/trade';
+import { IStock } from '../models/stock';
 
 const trades = createReducer(
   [AppActions.FETCH_TRADES_SUCCESS,

@@ -13,8 +13,8 @@ let stocks = {}; // use key->value so we can update stock data
 
 app.use(express.static('dist'));
 
-const randomNumber = (precision, min, max) => 
-  Math.floor(Math.random() * (max * precision - min * precision) + min * precision) / (min*precision);
+const randomNumber = (precision, min, max) =>
+  Math.floor(Math.random() * (max * precision - min * precision) + min * precision) / (min * precision);
 
 const createTrade = (request) => (
   {
@@ -57,7 +57,7 @@ app.get('/api/getTrades', (req, res) => {
     res.send(JSON.stringify([]));
   }
 });
-  
+
 app.get('/api/getStocks', (req, res) => {
   try {
     const stocksJson = JSON.stringify(Object.values(stocks));
@@ -67,13 +67,13 @@ app.get('/api/getStocks', (req, res) => {
     res.send(JSON.stringify([]));
   }
 });
-  
+
 app.post('/api/submitTrade', (req, res) => {
   const tradeRequest = req.body;
   if (tradeRequest.tradePrice === null || tradeRequest.quantity === null) {
     res.status(400).json({ error: 'Invalid input provided to submit trade' });
   }
-  
+
   try {
     const trade = createTrade(tradeRequest);
     trades.push(trade);
@@ -91,11 +91,11 @@ app.post('/api/submitTrade', (req, res) => {
       };
       stocks[tradeRequest.ticker] = updatedStock;
     }
-  
+
     res.send(
       trade
     );
-  
+
   } catch (e) {
     res.status(500).json({ error: 'Could not read data' });
     res.send(null);
