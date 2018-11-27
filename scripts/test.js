@@ -28,4 +28,4 @@ if (
 }
 
 
-jest.run();
+jest.run('--verbose');
