@@ -1,5 +1,5 @@
 // tslint:disable-next-line
-/// <reference path="../untyped-modules.d.ts" />
+/// <reference path="./definitions/untyped-modules.d.ts" />
 import * as React from 'react';
 import { Route, RouteComponentProps } from 'react-router-dom';
 import {
