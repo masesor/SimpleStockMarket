@@ -26,7 +26,7 @@
     ],
     "no-implicit-dependencies": false,
     "no-submodule-imports": [
-      true,
+      false,
       "~",
       "assets",
       "redux-devtools-extension",

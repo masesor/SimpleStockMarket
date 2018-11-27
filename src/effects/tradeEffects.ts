@@ -1,11 +1,21 @@
-import { Epic, ofType, combineEpics } from 'redux-observable';
 import { AnyAction, Action } from 'redux';
-import { switchMap, map } from 'rxjs/internal/operators';
+import { iif, of } from 'rxjs';
+import { Epic, ofType, combineEpics } from 'redux-observable';
+import { switchMap, map, catchError } from 'rxjs/internal/operators';
+import { isNil } from 'lodash';
 
-import { AppActions, fetchTradesSuccces, toggleNewTradeFormDialog } from '../actions';
 import { ITrade } from '../models/trade';
 import { constants } from '../constants';
 import { IAppState } from '../models/state';
+import { INewTradeForm } from '../models/form';
+import { getNewTradePayload } from '../utils/mappers';
+import {
+  AppActions,
+  fetchTradesSuccces,
+  submitTradeSuccess,
+  submitTradeError,
+  toggleNewTradeFormDialog
+} from '../actions';
 
 export const fetchTradesEffect:Epic<AnyAction, AnyAction> = (action$, store$, { getJSON }) =>
   action$.pipe(
@@ -20,25 +30,24 @@ export const fetchTradesEffect:Epic<AnyAction, AnyAction> = (action$, store$, { 
     }),
   );
 
-/* const submitTradeEffect: Epic<AnyAction, AnyAction> = (action$, store$, { ajax }) =>
-    action$.pipe(
-        ofType(AppActions.SUBMIT_TRADE),
-        map((action) => action.payload.tradeDetails),
-        switchMap((tradeDetails: INewTradeForm) =>
-            ajax
-                .post(`${constants.api.BASE_API_URL}/${constants.api.SUBMIT_TRADE}`, getNewTradePayload(tradeDetails))
-                .pipe(
-                    switchMap((data:any) =>
-                    iif(
-                        () => data.status === 200 && !isNil(data.response),
-                        of(submitTradeSuccess()),
-                        of(submitTradeError())
-                    )
-                    )
-                )
-        ),
-        catchError(() => of(submitTradeError()))
-    ); */
+export const submitTradeEffect:Epic<AnyAction, AnyAction> = (action$, store$, { post }) =>
+  action$.pipe(
+    ofType(AppActions.SUBMIT_TRADE),
+    map((action) => action.payload.tradeDetails),
+    switchMap((tradeDetails:INewTradeForm) =>
+      post(`${constants.api.BASE_API_URL}/${constants.api.SUBMIT_TRADE}`, getNewTradePayload(tradeDetails))
+        .pipe(
+          switchMap((data:any) =>
+            iif(
+              () => data.status === 200 && !isNil(data.response),
+              of(submitTradeSuccess()),
+              of(submitTradeError())
+            )
+          ),
+          catchError(() => of(submitTradeError()))
+        )
+    ),
+  );
 
 export const dismissNewTradeDialogEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
@@ -48,6 +57,6 @@ export const dismissNewTradeDialogEffect:Epic<AnyAction, AnyAction> = (action$) 
 
 export const tradeEffects:Epic<Action, Action, IAppState, any> = combineEpics(
   fetchTradesEffect,
-  // submitTradeEffect,
+  submitTradeEffect,
   dismissNewTradeDialogEffect
 );

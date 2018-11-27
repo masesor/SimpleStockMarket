@@ -21,7 +21,10 @@ export const rootEpic:Epic<Action, Action, any, any> = combineEpics(
 
 const browserHistory = createHistory();
 const epicMiddleware = createEpicMiddleware({
-  dependencies: { getJSON: ajax.getJSON }
+  dependencies: {
+    getJSON: ajax.getJSON,
+    post: ajax.post
+  }
 });
 
 const compose:(...args:any[]) => any = process.env.NODE_ENV === 'production' ? composeProd : composeDev;
