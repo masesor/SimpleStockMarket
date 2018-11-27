@@ -2,8 +2,8 @@ import { Big } from 'big.js';
 import { isEmpty, isNil } from 'lodash';
 import * as Moment from 'moment';
 
-import { IStock, StockType } from 'src/models/stock';
-import { ITrade } from 'src/models/trade';
+import { IStock, StockType } from '../models/stock';
+import { ITrade } from '../models/trade';
 import { toFinancial } from './formatters';
 
 export const getDividendYield = (stock:IStock, currentPrice:number) => {
