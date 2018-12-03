@@ -1,5 +1,5 @@
 {
-  "name": "react-app-template",
+  "name": "simple-stock-market",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -138,7 +138,7 @@
     ],
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "/Users/samrose/dev/react-app-template/tsconfig.test.json"
+        "tsConfigFile": "./tsconfig.test.json"
       }
     }
   },
